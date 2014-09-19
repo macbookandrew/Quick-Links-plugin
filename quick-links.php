@@ -21,7 +21,7 @@ if ( is_admin() ) {
 
 /* display frontend */
 if ( ! is_admin() ) {
-    require_once( 'inc/shortcode.php' );
+    require_once( 'inc/quick-links-shortcode.php' );
 }
 
 ?>
