@@ -22,6 +22,7 @@ if ( is_admin() ) {
 /* display frontend */
 if ( ! is_admin() ) {
     require_once( 'inc/quick-links-shortcode.php' );
+    #TODO: check for existing "child theme"-type styles
     add_action( 'wp_enqueue_scripts', 'armd_ql_styles' );
     function armd_ql_styles() {
         wp_enqueue_style( 'quick-link-styles', plugins_url() . '/quick-links/css/quick-links-styles.css' );
