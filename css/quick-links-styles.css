@@ -3,6 +3,12 @@
 	padding: 1em 0;
 }
 
+.home-quick-links-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .home-quick-link {
 	padding: 1em;
 }
