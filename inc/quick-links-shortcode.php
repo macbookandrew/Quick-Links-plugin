@@ -20,15 +20,17 @@ function home_quick_links() {
     if ( $home_links_query->have_posts() ) {
 
         // start content container
-        $output = '<section class="home-links-container">';
+        $output = '<section class="home-quick-links-container">';
 
         while ( $home_links_query->have_posts() ) {
 
             $home_links_query->the_post();
-            $URL = get_post_meta( $home_links_query->ID, 'armd_ql_url', true );
+            $URL = get_post_meta( get_the_ID(), 'armd_ql_url', true );
+            $image_URL_array = wp_get_attachment_image_src( get_post_thumbnail_ID( $home_links_query->ID ), 'full' );
+            $image_URL = $image_URL_array[0];
 
-            $output .= '<figure class="home-link">';
-            $output .= '<a href="' . $URL . '">' . get_the_post_thumbnail( $home_links_query->ID, 'full' ) . '</a>';
+            $output .= '<figure class="home-quick-link">';
+            $output .= '<a href="' . $URL . '"><img src="' . $image_URL . '" /></a>';
             $output .= '</figure>';
 
         }
