@@ -9,12 +9,7 @@ add_shortcode( 'quick_links', 'home_quick_links' );
 function home_quick_links() {
 
     // get all home_quick_link posts
-    $args = array (
-        'post_type'              => 'home_quick_link',
-    );
-
-    // The Query
-    $home_links_query = new WP_Query( $args );
+    $home_links_query = new WP_Query( 'post_type=home_quick_link' );
 
     // The Loop
     if ( $home_links_query->have_posts() ) {
@@ -26,8 +21,8 @@ function home_quick_links() {
 
             $home_links_query->the_post();
             $URL = get_post_meta( get_the_ID(), 'armd_ql_url', true );
-            $image_URL_array = wp_get_attachment_image_src( get_post_thumbnail_ID( $home_links_query->ID ), 'full' );
-            $image_URL = $image_URL_array[0];
+            $image_URL_array = wp_get_attachment_image_src( get_post_thumbnail_ID( get_the_ID() ), 'full' );
+            $image_URL = reset( $image_URL_array );
 
             $output .= '<figure class="home-quick-link">';
             $output .= '<a href="' . $URL . '"><img src="' . $image_URL . '" /></a>';

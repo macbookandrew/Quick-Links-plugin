@@ -13,7 +13,7 @@ A WordPress plugin to show a series of images as “quick links” with the shor
 
 ## Installation ##
 1. Install the plugin
-1. Add Quick Links posts in the same way you do normal posts or pages. Be sure to set a featured image and URL if it should link somewhere.
+1. Look for the “Quick Links” item in the admin section and create as many as needed. Choose a featured image to be displayed, as well as entering a URL if it should link somewhere.
 1. Add the `[quick_links]` shortcode in the page where you want the buttons to be displayed
 
 ## Changelog ##

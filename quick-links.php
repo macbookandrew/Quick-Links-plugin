@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once( 'inc/quick-links-post-type.php' );
+
 /* load backend */
 if ( is_admin() ) {
     require_once( 'inc/quick-links-admin.php' );
