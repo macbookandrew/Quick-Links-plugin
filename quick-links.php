@@ -40,6 +40,11 @@ if ( ! is_admin() ) {
         }
     }
 
+    // register modernizr custom build
+    function register_modernizr() {
+        wp_enqueue_script( 'modernizr', get_stylesheet_directory_uri() . '/js/modernizr.custom.17706.js' );
+    }
+    add_action( 'wp_enqueue_scripts', 'register_modernizr' );
 }
 
 #TODO: add recommended sizes, etc.

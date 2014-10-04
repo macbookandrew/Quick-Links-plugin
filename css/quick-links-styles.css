@@ -5,6 +5,12 @@
     content: "";
     display: table;
     clear: both; }
+  .flexbox .home-quick-links-container {
+    display: flex; }
+    @media (max-width: 1250px) {
+      .flexbox .home-quick-links-container {
+        flex-wrap: wrap;
+        justify-content: center; } }
 
 .home-quick-link {
   padding: 1em; }

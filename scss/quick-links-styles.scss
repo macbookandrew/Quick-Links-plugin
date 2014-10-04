@@ -7,6 +7,13 @@
         display: table;
         clear: both;
     }
+    .flexbox & {
+        display: flex;
+        @media (max-width: 1250px) {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
 }
 
 .home-quick-link {
