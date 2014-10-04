@@ -42,7 +42,7 @@ if ( ! is_admin() ) {
 
     // register modernizr custom build
     function register_modernizr() {
-        wp_enqueue_script( 'modernizr', get_stylesheet_directory_uri() . '/js/modernizr.custom.17706.js' );
+        wp_enqueue_script( 'modernizr', plugins_url( '/js/modernizr.flexbox.js', __FILE__ ) );
     }
     add_action( 'wp_enqueue_scripts', 'register_modernizr' );
 }
