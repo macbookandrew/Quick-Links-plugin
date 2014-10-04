@@ -17,5 +17,9 @@ A WordPress plugin to show a series of images as “quick links” with the shor
 1. Add the `[quick_links]` shortcode in the page where you want the buttons to be displayed
 
 == Changelog ==
+= 1.1 =
+ - Add flexbox support to center items in the parent container
+ - Add a custom build of Modernizr to detect flexbox support
+
 = 1.0 =
 This is the first stable version.
