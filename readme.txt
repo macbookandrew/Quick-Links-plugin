@@ -3,7 +3,7 @@ Contributors: macbookandrew
 Tags: button
 Donate link: http://andrewrminion.com/
 Tested up to: 4.0
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
