@@ -3,7 +3,7 @@ Contributors: macbookandrew
 Tags: button
 Donate link: http://andrewrminion.com/
 Tested up to: 4.0
-Stable tag: 1.1.1
+Stable tag: 1.2
 License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -14,9 +14,15 @@ A WordPress plugin to show a series of images as “quick links” with the shor
 == Installation ==
 1. Install the plugin
 1. Look for the “Quick Links” item in the admin section and create as many as needed. Choose a featured image to be displayed, as well as entering a URL if it should link somewhere.
-1. Add the `[quick_links]` shortcode in the page where you want the buttons to be displayed
+1. Display it one of two ways:
+    1. Add the `[quick_links]` shortcode in the page where you want the buttons to be displayed
+    1. Add the following line of code in a theme PHP file
+    `if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); }`
 
 == Changelog ==
+= 1.2 =
+ - Allow adding via shortcode or function in PHP file
+
 = 1.1.1 =
  - Check whether or not Modernizr has already been loaded before loading our customized copy
 

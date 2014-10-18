@@ -4,8 +4,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_shortcode( 'quick_links', 'home_quick_links' );
-// add quick-link shortcode
+/*
+ * Add in post content:
+ * [quick_links]
+ *
+ * Can also be called directly in theme PHP file:
+ * <?php if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); } ?>
+ */
+function home_quick_links_shortcode() {
+    ob_start();
+    home_quick_links();
+    $quick_links_content = ob_get_clean();
+    return $quick_links_content;
+}
+add_shortcode( 'quick_links', 'home_quick_links_shortcode' );
+
+// the quick links loop
 function home_quick_links() {
 
     // get all home_quick_link posts
@@ -31,7 +45,7 @@ function home_quick_links() {
         }
         $output .= '</section><!-- .home-links-container -->';
 
-        return $output;
+        echo $output;
 
     } else {
         // no posts found
