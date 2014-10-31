@@ -27,7 +27,7 @@ function create_quick_link() {
 		'label'               => 'home_quick_link',
 		'description'         => 'Homepage Quick Link',
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'thumbnail', ),
+		'supports'            => array( 'title', 'thumbnail', 'page-attributes' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
@@ -51,4 +51,10 @@ function create_thumbnail_size() {
     if ( ! in_array( 'home_quick_link', get_intermediate_image_sizes() ) ) {
         add_image_size( 'home_quick_link', '600', '600' );
     }
+}
+
+// add thumbnail support if theme doesn't support it already
+add_action( 'after_setup_theme', 'add_thumbnail_support' );
+function add_thumbnail_support() {
+    add_theme_support( 'post-thumbnails', array( 'home_quick_link' ) );
 }
