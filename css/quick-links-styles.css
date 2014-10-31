@@ -14,13 +14,22 @@
 
 .home-quick-link {
   padding: 1em; }
-  .home-quick-link + .home-quick-link {
-    margin-left: 1em; }
-  @media screen and (min-width: 900px) {
+  .no-flexbox .home-quick-link {
+    float: left; }
+  @media (min-width: 900px) {
     .home-quick-link {
-      width: 33%;
-      float: left; } }
-  @media screen and (max-width: 500px) {
+      width: 33%; }
+      .no-flexbox .home-quick-link {
+        width: 31%; } }
+  @media (min-width: 500px) {
+    .home-quick-link + .home-quick-link {
+      margin-left: 1em; } }
+  @media (min-width: 500px) and (max-width: 899px) {
+    .home-quick-link {
+      width: 50%; }
+      .no-flexbox .home-quick-link {
+        width: 47%; } }
+  @media (max-width: 500px) {
     .home-quick-link {
       display: block;
       width: 100%;
@@ -30,7 +39,3 @@
         width: 100%; }
       .home-quick-link img {
         margin: 0 auto; } }
-  @media screen and (min-width: 500px) and (max-width: 899px) {
-    .home-quick-link {
-      width: 50%;
-      float: left; } }
