@@ -3,7 +3,7 @@ Contributors: macbookandrew
 Tags: button
 Donate link: http://andrewrminion.com/
 Tested up to: 4.0
-Stable tag: 1.2.1
+Stable tag: 1.3
 License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -20,6 +20,9 @@ A WordPress plugin to show a series of images as “quick links” with the shor
     `if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); }`
 
 == Changelog ==
+= 1.3 =
+ - Add support for image captions
+
 = 1.2 =
  - Allow adding via shortcode or function in PHP file
 

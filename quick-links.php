@@ -3,7 +3,7 @@
  * Plugin Name: Quick Links
  * Plugin URI: http://code.andrewrminion.com/quick-links-plugin
  * Description: Gives you “quick link” buttons on the home page
- * Version: 1.2.1
+ * Version: 1.3
  * Author: Andrew Minion
  * Author URI: http://andrewrminion.com
  * License: GPL2
