@@ -3,7 +3,7 @@
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
 - Tested up to: 4.0
-- Stable tag: 1.3
+- Stable tag: 1.4
 - License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -19,6 +19,9 @@ A WordPress plugin to show a series of images as “quick links” with the shor
     1. Add this line of code in a theme PHP file: `if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); }`
 
 ## Changelog ##
+### 1.4 ###
+ - Add support for ending date
+
 ### 1.3 ###
  - Add support for image captions
 

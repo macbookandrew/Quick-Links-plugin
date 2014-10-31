@@ -4,14 +4,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-add_action( 'add_meta_boxes', 'armd_ql_add_meta_box' );
+add_action( 'add_meta_boxes', 'armd_ql_add_meta_boxes' );
 // add URL metabox
-function armd_ql_add_meta_box() {
-    add_meta_box( 'armd-ql-url', 'Image Link', 'armd_ql_add_meta', 'home_quick_link', 'normal' );
+function armd_ql_add_meta_boxes() {
+    add_meta_box( 'armd-ql-url', 'Image Link', 'armd_ql_add_url', 'home_quick_link', 'normal' );
+    add_meta_box( 'armd-ql-publishing-options', 'Publishing Options', 'armd_ql_add_meta', 'home_quick_link', 'side' );
 }
 
 // print URL metabox content
-function armd_ql_add_meta( $post ) {
+function armd_ql_add_url( $post ) {
 
     // Get existing data, if any
     $this_url = get_post_meta( $post->ID, 'armd_ql_url', true );
@@ -24,6 +25,27 @@ function armd_ql_add_meta( $post ) {
         if ( isset( $this_url ) ) { echo ' value="' . $this_url . '" '; }
     echo 'size="100%"><br/>';
     echo '<label for="armd_ql_url">Add the URL this Quick Link should link to.</label>';
+
+}
+
+// print publishing options metabox content
+function armd_ql_add_meta( $post ) {
+
+    // Get existing data, if any
+    $end_date = get_post_meta( $post->ID, 'armd_ql_end_date', true );
+
+    // Format existing data if it exists
+    if ( $end_date ) { $end_date = date( 'Y-m-d', strtotime( $end_date ) ); }
+
+    // Add an nonce field so we can check for it later.
+    wp_nonce_field( 'armd_ql_form_picker_meta_box', 'armd_ql_form_picker_meta_box_nonce' );
+
+    echo '<p>Leave these fields empty to disable them.</p>';
+    echo '<p>Begin Date: change the <strong>Publish</strong> date above.</p>';
+    echo '<label for="armd_ql_end_date">End Date: <input type="date" name="armd_ql_end_date" placeholder="' . date( 'm/d/Y' ) . '"';
+        // fill with existing data, if present
+        if ( isset( $end_date ) ) { echo ' value="' . $end_date . '" '; }
+    echo '></label><br/>';
 
 }
 
@@ -63,10 +85,15 @@ function armd_ql_save_meta_box_data( $post_id ) {
 	}
 
 	// Sanitize user input.
-	$my_data = sanitize_text_field( $_POST['armd_ql_url'] );
+	$sanitized_URL = sanitize_text_field( $_POST['armd_ql_url'] );
+	if ( $_POST['armd_ql_end_date'] ) {
+        $sanitized_end_date = date( 'Ymd', strtotime( sanitize_text_field( $_POST['armd_ql_end_date'] ) ) );
+    }
+    else { $sanitized_end_date = NULL; }
 
 	// Update the meta field in the database.
-	update_post_meta( $post_id, 'armd_ql_url', $my_data );
+	update_post_meta( $post_id, 'armd_ql_url', $sanitized_URL );
+	update_post_meta( $post_id, 'armd_ql_end_date', $sanitized_end_date );
 
 }
 

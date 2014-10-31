@@ -23,7 +23,24 @@ add_shortcode( 'quick_links', 'home_quick_links_shortcode' );
 function home_quick_links() {
 
     // get all home_quick_link posts
-    $home_links_query = new WP_Query( 'post_type=home_quick_link' );
+    $home_links_query = new WP_Query( array(
+        'post_type'         => 'home_quick_link',
+        'order'             => 'ASC',
+        'meta_query'    => array(
+            'relation'  => 'OR',
+            array(
+                'key'       => 'armd_ql_end_date',
+                'value'     => date( 'Ymd' ),
+                'type'      => 'DATE',
+                'compare'   => '>=',
+            ),
+            array(
+                'key'       => 'armd_ql_end_date',
+                'value'     => '',
+                'compare'   => '==',
+            ),
+        )
+    ) );
 
     // The Loop
     if ( $home_links_query->have_posts() ) {
