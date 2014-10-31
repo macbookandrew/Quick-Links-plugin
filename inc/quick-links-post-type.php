@@ -44,3 +44,11 @@ function create_quick_link() {
 	register_post_type( 'home_quick_link', $args );
 
 }
+
+// add custom thumbnail size if it doesn't exist already
+add_action( 'init', 'create_thumbnail_size' );
+function create_thumbnail_size() {
+    if ( ! in_array( 'home_quick_link', get_intermediate_image_sizes() ) ) {
+        add_image_size( 'home_quick_link', '600', '600' );
+    }
+}
