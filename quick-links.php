@@ -3,7 +3,7 @@
  * Plugin Name: Quick Links
  * Plugin URI: http://code.andrewrminion.com/quick-links-plugin
  * Description: Gives you “quick link” buttons on the home page
- * Version: 1.5
+ * Version: 1.5.1
  * Author: Andrew Minion
  * Author URI: http://andrewrminion.com
  * License: GPL2
@@ -48,6 +48,39 @@ if ( ! is_admin() ) {
     add_action( 'wp_enqueue_scripts', 'register_modernizr' );
 }
 
-#TODO: add recommended sizes, etc.
+// get image thumbnail sizes
+function get_image_sizes( $size = '' ) {
+    global $_wp_additional_image_sizes;
+
+    $sizes = array();
+    $get_intermediate_image_sizes = get_intermediate_image_sizes();
+
+    // Create the full array with sizes and crop info
+    foreach( $get_intermediate_image_sizes as $_size ) {
+        if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
+            $sizes[ $_size ]['width'] = get_option( $_size . '_size_w' );
+            $sizes[ $_size ]['height'] = get_option( $_size . '_size_h' );
+            $sizes[ $_size ]['crop'] = (bool) get_option( $_size . '_crop' );
+        } elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
+            $sizes[ $_size ] = array(
+                'width' => $_wp_additional_image_sizes[ $_size ]['width'],
+                'height' => $_wp_additional_image_sizes[ $_size ]['height'],
+                'crop' =>  $_wp_additional_image_sizes[ $_size ]['crop']
+            );
+        }
+    }
+
+    // Get only 1 size if found
+    if ( $size ) {
+        if( isset( $sizes[ $size ] ) ) {
+            return $sizes[ $size ];
+        } else {
+            return false;
+        }
+    }
+
+    return $sizes;
+}
+
 #TODO: add "order" field to allow sorting, add to query ORDERBY
 #TODO: add parameters to shortcode and categories to allow multiple "sets"

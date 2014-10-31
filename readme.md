@@ -3,7 +3,7 @@
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
 - Tested up to: 4.0
-- Stable tag: 1.5
+- Stable tag: 1.5.1
 - License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -22,6 +22,9 @@ By adding a line in your `functions.php` file, you can set the size of the image
 1. To change the size of the images, add this line  of code in your theme’s `functions.php` file and edit the dimensions: `add_image_size( 'home_quick_link', '500', '300' );`
 
 ## Changelog ##
+### 1.5.1 ###
+ - Display custom image size in featured image metabox
+
 ### 1.5 ###
  - Add support for custom thumbnail sizes
 

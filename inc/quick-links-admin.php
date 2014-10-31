@@ -40,7 +40,6 @@ function armd_ql_add_meta( $post ) {
     // Add an nonce field so we can check for it later.
     wp_nonce_field( 'armd_ql_form_picker_meta_box', 'armd_ql_form_picker_meta_box_nonce' );
 
-    echo '<p>Leave these fields empty to disable them.</p>';
     echo '<p>Begin Date: change the <strong>Publish</strong> date above.</p>';
     echo '<label for="armd_ql_end_date">End Date: <input type="date" name="armd_ql_end_date" placeholder="' . date( 'm/d/Y' ) . '"';
         // fill with existing data, if present
@@ -99,8 +98,10 @@ function armd_ql_save_meta_box_data( $post_id ) {
 
 add_action('do_meta_boxes', 'meta_box_position');
 // move featured image metabox
-#TODO: figure out why it's not moving
 function meta_box_position() {
-	remove_meta_box( 'postimagediv', 'post', 'side' );
-	add_meta_box('postimagediv', __('Featured Image'), 'post_thumbnail_meta_box', 'post', 'normal', 'high');
+    $custom_thumbnail_dimensions = get_image_sizes( 'home_quick_link' );
+    $home_quick_link_dimensions = $custom_thumbnail_dimensions['width'] . '&times;' . $custom_thumbnail_dimensions['height'] . 'px';
+
+	remove_meta_box( 'postimagediv', 'home_quick_link', 'side' );
+	add_meta_box('postimagediv', 'Featured Image (' . $home_quick_link_dimensions . ')', 'post_thumbnail_meta_box', 'home_quick_link', 'normal', 'high');
 }
