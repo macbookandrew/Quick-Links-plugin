@@ -52,16 +52,15 @@ function home_quick_links() {
 
             $home_links_query->the_post();
             $URL = get_post_meta( get_the_ID(), 'armd_ql_url', true );
-            $image_URL_array = wp_get_attachment_image_src( get_post_thumbnail_ID( get_the_ID() ), 'full' );
-            $image_URL = reset( $image_URL_array );
             $caption = get_post( get_post_thumbnail_id() )->post_excerpt;
 
             $output .= '<figure class="home-quick-link';
             if ( $caption ) { $output .= ' wp-caption'; }
             $output .= '">';
-            $output .= '<a href="' . $URL . '">';
-            $output .= '<img src="' . $image_URL . '" /></a>';
+            if ( $URL ) { $output .= '<a href="' . $URL . '">'; }
+            $output .= get_the_post_thumbnail();
             if ( $caption ) { $output .= '<figcaption class="wp-caption-text">' . $caption . '</figcaption>'; }
+            if ( $URL ) { $output .= '</a>'; }
             $output .= '</figure>';
 
         }
