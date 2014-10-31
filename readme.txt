@@ -11,7 +11,7 @@ A WordPress plugin to show a series of images as “quick links.”
 == Description ==
 A WordPress plugin to show a series of images as “quick links” with the shortcode `[quick_links]`.
 
-By adding a line in your `functions.php` file, you can set the size of the images (defaults to 500×300px).
+By adding a line in your `functions.php` file, you can set the size of the images (defaults to 500×300px). See the Installation section for more details.
 
 == Installation ==
 1. Install the plugin
