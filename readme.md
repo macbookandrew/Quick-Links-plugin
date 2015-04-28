@@ -21,6 +21,10 @@ By adding a line in your `functions.php` file, you can set the size of the image
     1. Add this line of code in a theme PHP file: `if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); }`
 1. To change the size of the images, add this line  of code in your theme’s `functions.php` file and edit the dimensions: `add_image_size( 'home_quick_link', '500', '300' );`
 
+###Advanced###
+- To include your own stylesheet, add a file named `quick-links-styles.css` in your template folder.
+
+
 ## Changelog ##
 ### 1.5.1 ###
  - Display custom image size in featured image metabox
