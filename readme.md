@@ -2,8 +2,8 @@
 - Contributors: [macbookandrew](https://profiles.wordpress.org/macbookandrew/)
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
-- Tested up to: 4.0
-- Stable tag: 1.5.1
+- Tested up to: 4.2.1
+- Stable tag: 1.6
 - License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -26,6 +26,12 @@ By adding a line in your `functions.php` file, you can set the size of the image
 
 
 ## Changelog ##
+### 1.6 ###
+ - Make images output more accessible using the slide title
+ - Simplify spacing rules
+ - Add some no-flexbox fallbacks
+ - Bump “tested up to” version
+
 ### 1.5.1 ###
  - Display custom image size in featured image metabox
 
