@@ -2,8 +2,8 @@
 - Contributors: [macbookandrew](https://profiles.wordpress.org/macbookandrew/)
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
-- Tested up to: 4.0
-- Stable tag: 1.5.1
+- Tested up to: 4.2.1
+- Stable tag: 1.6
 - License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -21,7 +21,17 @@ By adding a line in your `functions.php` file, you can set the size of the image
     1. Add this line of code in a theme PHP file: `if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); }`
 1. To change the size of the images, add this line  of code in your theme’s `functions.php` file and edit the dimensions: `add_image_size( 'home_quick_link', '500', '300' );`
 
+###Advanced###
+- To include your own stylesheet, add a file named `quick-links-styles.css` in your template folder.
+
+
 ## Changelog ##
+### 1.6 ###
+ - Make images output more accessible using the slide title
+ - Simplify spacing rules
+ - Add some no-flexbox fallbacks
+ - Bump “tested up to” version
+
 ### 1.5.1 ###
  - Display custom image size in featured image metabox
 

@@ -58,6 +58,7 @@ function home_quick_links() {
             if ( $caption ) { $output .= ' wp-caption'; }
             $output .= '">';
             if ( $URL ) { $output .= '<a href="' . $URL . '">'; }
+            $output .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
             $output .= get_the_post_thumbnail( get_the_ID(), 'home_quick_link' );
             if ( $caption ) { $output .= '<figcaption class="wp-caption-text">' . $caption . '</figcaption>'; }
             if ( $URL ) { $output .= '</a>'; }
