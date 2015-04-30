@@ -3,7 +3,7 @@
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
 - Tested up to: 4.2.1
-- Stable tag: 1.6
+- Stable tag: 1.6.1
 - License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -26,6 +26,9 @@ By adding a line in your `functions.php` file, you can set the size of the image
 
 
 ## Changelog ##
+### 1.6.1 ###
+ - Add support for opening links in new windows
+
 ### 1.6 ###
  - Make images output more accessible using the slide title
  - Simplify spacing rules

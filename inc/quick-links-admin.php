@@ -15,7 +15,8 @@ function armd_ql_add_meta_boxes() {
 function armd_ql_add_url( $post ) {
 
     // Get existing data, if any
-    $this_url = get_post_meta( $post->ID, 'armd_ql_url', true );
+    $this_url = esc_url( get_post_meta( $post->ID, 'armd_ql_url', true ) );
+    $target_blank = get_post_meta( $post->ID, 'armd_ql_target_blank', true );
 
     // Add an nonce field so we can check for it later.
     wp_nonce_field( 'armd_ql_form_picker_meta_box', 'armd_ql_form_picker_meta_box_nonce' );
@@ -24,7 +25,12 @@ function armd_ql_add_url( $post ) {
         // fill with existing data, if present
         if ( isset( $this_url ) ) { echo ' value="' . $this_url . '" '; }
     echo 'size="100%"><br/>';
-    echo '<label for="armd_ql_url">Add the URL this Quick Link should link to.</label>';
+    echo '<label for="armd_ql_url">Add the URL this Quick Link should link to.</label><br/>';
+    // add checkbox for open in new window
+    echo '<label for="armd_ql_target_blank"><input type="checkbox" value="yes" name="armd_ql_target_blank" id="armd_ql_target_blank"';
+        // add checked status, if present
+        checked( $target_blank, 'yes' );
+    echo '> Open in new window?</label>';
 
 }
 
@@ -85,14 +91,22 @@ function armd_ql_save_meta_box_data( $post_id ) {
 
 	// Sanitize user input.
 	$sanitized_URL = sanitize_text_field( $_POST['armd_ql_url'] );
+    if ( sanitize_text_field( $_POST['armd_ql_target_blank'] ) === 'yes' ) {
+        $sanitized_target_blank = 'yes';
+    } else {
+        $sanitized_target_blank = 'no';
+    }
 	if ( $_POST['armd_ql_end_date'] ) {
         $sanitized_end_date = date( 'Ymd', strtotime( sanitize_text_field( $_POST['armd_ql_end_date'] ) ) );
     }
-    else { $sanitized_end_date = NULL; }
+    else {
+        $sanitized_end_date = NULL;
+    }
 
 	// Update the meta field in the database.
-	update_post_meta( $post_id, 'armd_ql_url', $sanitized_URL );
-	update_post_meta( $post_id, 'armd_ql_end_date', $sanitized_end_date );
+    update_post_meta( $post_id, 'armd_ql_url', $sanitized_URL );
+    update_post_meta( $post_id, 'armd_ql_target_blank', $sanitized_target_blank );
+    update_post_meta( $post_id, 'armd_ql_end_date', $sanitized_end_date );
 
 }
 
