@@ -21,16 +21,17 @@ function armd_ql_add_url( $post ) {
     // Add an nonce field so we can check for it later.
     wp_nonce_field( 'armd_ql_form_picker_meta_box', 'armd_ql_form_picker_meta_box_nonce' );
 
-    echo '<input type="url" name="armd_ql_url" placeholder="' . get_home_url() . '/"';
-        // fill with existing data, if present
-        if ( isset( $this_url ) ) { echo ' value="' . $this_url . '" '; }
-    echo 'size="100%"><br/>';
+    echo '<p class="description">';
     echo '<label for="armd_ql_url">Add the URL this Quick Link should link to.</label><br/>';
-    // add checkbox for open in new window
+    echo '<input type="url" name="armd_ql_url" placeholder="' . get_home_url() . '/"';
+    // fill with existing data, if present
+    if ( isset( $this_url ) ) { echo ' value="' . $this_url . '" '; }
+    echo 'size="100%"></p>';
+    echo '<p class="description">';
     echo '<label for="armd_ql_target_blank"><input type="checkbox" value="yes" name="armd_ql_target_blank" id="armd_ql_target_blank"';
-        // add checked status, if present
-        checked( $target_blank, 'yes' );
-    echo '> Open in new window?</label>';
+    // add checked status, if present
+    checked( $target_blank, 'yes' );
+    echo '>  <em>Open link in a new window/tab</em></label></p>';
 
 }
 
