@@ -47,3 +47,30 @@
         img { margin: 0 auto; }
     }
 }
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    left: -99999px;
+    top: -99999px;
+
+    &:focus {
+        background-color: #f1f1f1;
+        border-radius: 3px;
+        box-shadow: 0 0 2px 2px rgba($black, 0.6);
+        clip: auto !important;
+        color: #21759b;
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        height: auto;
+        line-height: normal;
+        padding: 15px 23px 14px;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        text-decoration: none;
+        width: auto;
+        z-index: 100000; /* Above WP toolbar */
+    }
+}
