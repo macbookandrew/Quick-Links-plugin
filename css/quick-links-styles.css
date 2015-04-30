@@ -1,6 +1,8 @@
 .home-quick-links-container {
   width: 100%;
-  padding: 1em 0; }
+  padding: 1em; }
+  .home-quick-links-container * {
+    box-sizing: border-box; }
   .home-quick-links-container:after {
     content: "";
     display: table;
@@ -16,19 +18,14 @@
   padding: 1em; }
   .no-flexbox .home-quick-link {
     float: left; }
+  .home-quick-link img {
+    width: 100%; }
   @media (min-width: 900px) {
     .home-quick-link {
-      width: 33%; }
-      .no-flexbox .home-quick-link {
-        width: 31%; } }
-  @media (min-width: 500px) {
-    .home-quick-link + .home-quick-link {
-      margin-left: 1em; } }
+      width: 33%; } }
   @media (min-width: 500px) and (max-width: 899px) {
     .home-quick-link {
-      width: 50%; }
-      .no-flexbox .home-quick-link {
-        width: 47%; } }
+      width: 50%; } }
   @media (max-width: 500px) {
     .home-quick-link {
       display: block;
