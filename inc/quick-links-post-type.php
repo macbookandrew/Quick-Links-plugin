@@ -56,5 +56,7 @@ function create_thumbnail_size() {
 // add thumbnail support if theme doesn't support it already
 add_action( 'after_setup_theme', 'add_thumbnail_support' );
 function add_thumbnail_support() {
-    add_theme_support( 'post-thumbnails', array( 'home_quick_link' ) );
+    if ( ! current_theme_supports( 'post-thumbnails' ) ) {
+        add_theme_support( 'post-thumbnails', array( 'home_quick_link' ) );
+    }
 }
