@@ -2,7 +2,7 @@
 - Contributors: [macbookandrew](https://profiles.wordpress.org/macbookandrew/)
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
-- Tested up to: 4.2.4
+- Tested up to: 4.3
 - Stable tag: 1.6.3
 - License: GPL2
 
