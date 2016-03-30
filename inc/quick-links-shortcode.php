@@ -12,9 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * <?php if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); } ?>
  */
 function home_quick_links_shortcode() {
-    wp_enqueue_style( 'quick-link-styles' );
-    wp_enqueue_script( 'modernizr-flexbox-flexboxlegacy' );
-
     // get content
     ob_start();
     home_quick_links();
@@ -25,6 +22,9 @@ add_shortcode( 'quick_links', 'home_quick_links_shortcode' );
 
 // the quick links loop
 function home_quick_links() {
+    // include style and script
+    wp_enqueue_style( 'quick-link-styles' );
+    wp_enqueue_script( 'modernizr-flexbox-flexboxlegacy' );
 
     // get all home_quick_link posts
     $home_links_query = new WP_Query( array(
