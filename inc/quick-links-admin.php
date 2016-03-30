@@ -50,7 +50,7 @@ function armd_ql_add_meta( $post ) {
     echo '<p>Begin Date: change the <strong>Publish</strong> date above.</p>';
     echo '<label for="armd_ql_end_date">End Date: <input type="date" name="armd_ql_end_date" placeholder="' . date( 'm/d/Y' ) . '"';
     // fill with existing data, if present
-    if ( isset( $end_date ) ) { echo ' value="' . $end_date . '" '; }
+    if ( isset( $end_date ) && ( $end_date != '9999-12-31' ) ) { echo ' value="' . $end_date . '" '; }
     echo '></label><br/>';
 
 }
@@ -101,7 +101,7 @@ function armd_ql_save_meta_box_data( $post_id ) {
         $sanitized_end_date = date( 'Ymd', strtotime( sanitize_text_field( $_POST['armd_ql_end_date'] ) ) );
     }
     else {
-        $sanitized_end_date = NULL;
+        $sanitized_end_date = '99991231';
     }
 
     // Update the meta field in the database.
