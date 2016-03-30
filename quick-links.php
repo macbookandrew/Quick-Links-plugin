@@ -3,9 +3,9 @@
  * Plugin Name: Quick Links
  * Plugin URI: http://code.andrewrminion.com/quick-links-plugin
  * Description: A WordPress plugin to show a series of images as “quick links.”
- * Version: 1.6.3
- * Author: Andrew Minion
- * Author URI: http://andrewrminion.com
+ * Version: 1.7
+ * Author: AndrewRMinion Design
+ * Author URI: https://andrewrminion.com/
  * License: GPL2
  */
 
@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+/* register post type */
 require_once( 'inc/quick-links-post-type.php' );
 
 /* load backend */
@@ -48,7 +49,7 @@ if ( ! is_admin() ) {
     add_action( 'wp_enqueue_scripts', 'register_modernizr', 15 );
 }
 
-// get image thumbnail sizes
+/* get image thumbnail sizes */
 function get_image_sizes( $size = '' ) {
     global $_wp_additional_image_sizes;
 

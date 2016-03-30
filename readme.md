@@ -2,8 +2,8 @@
 - Contributors: [macbookandrew](https://profiles.wordpress.org/macbookandrew/)
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
-- Tested up to: 4.3
-- Stable tag: 1.6.3
+- Tested up to: 4.4.2
+- Stable tag: 1.7
 - License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -26,6 +26,9 @@ By adding a line in your `functions.php` file, you can set the size of the image
 
 
 ## Changelog ##
+### 1.7 ###
+ - Fix NULL/empty end dates
+
 ### 1.6.3 ###
  - Defer check for modernizr until after theme has loaded scripts
 
