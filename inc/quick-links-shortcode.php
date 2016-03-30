@@ -1,7 +1,7 @@
 <?php
 /* Prevent this file from being accessed directly */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
 /*

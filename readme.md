@@ -61,7 +61,7 @@ By adding a line in your `functions.php` file, you can set the size of the image
 
 ### 1.1.1 ###
  - Check whether or not Modernizr has already been loaded before loading our customized copy
- 
+
 ### 1.1 ###
 - Add flexbox support to center items in the parent container
 - Add a custom build of Modernizr to detect flexbox support

@@ -1,6 +1,6 @@
 .home-quick-links-container {
-	width: 100%;
-	padding: 1em;
+    width: 100%;
+    padding: 1em;
 
     & * { box-sizing: border-box; }
     &:after {
@@ -21,7 +21,7 @@
     .no-flexbox & { float: left; }
     img { width: 100%; }
 
-	padding: 1em;
+    padding: 1em;
 
     @media (min-width: 900px) { width: 33%; }
 

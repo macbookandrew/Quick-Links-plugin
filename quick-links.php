@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Quick Links
  * Plugin URI: http://code.andrewrminion.com/quick-links-plugin
- * Description: Gives you “quick link” buttons on the home page
+ * Description: A WordPress plugin to show a series of images as “quick links.”
  * Version: 1.6.3
  * Author: Andrew Minion
  * Author URI: http://andrewrminion.com
@@ -11,7 +11,7 @@
 
 /* Prevent this file from being accessed directly */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
 require_once( 'inc/quick-links-post-type.php' );
