@@ -12,6 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * <?php if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); } ?>
  */
 function home_quick_links_shortcode() {
+    wp_enqueue_style( 'quick-link-styles' );
+    wp_enqueue_script( 'modernizr-flexbox-flexboxlegacy' );
+
+    // get content
     ob_start();
     home_quick_links();
     $quick_links_content = ob_get_clean();
