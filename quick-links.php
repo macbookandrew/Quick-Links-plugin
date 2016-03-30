@@ -82,4 +82,18 @@ function get_image_sizes( $size = '' ) {
     return $sizes;
 }
 
+/* handle upgrades */
+register_activation_hook( __FILE__, 'armd_ql_fix_null_values' );
+function armd_ql_fix_null_values() {
+    global $wpdb;
+    $wpdb->update(
+        $wpdb->prefix . 'postmeta',
+        array( 'meta_value' => '99991231' ),
+        array(
+            'meta_key'      => 'armd_ql_end_date',
+            'meta_value'    => NULL,
+        )
+    );
+}
+
 #TODO: add parameters to shortcode and categories to allow multiple "sets"
