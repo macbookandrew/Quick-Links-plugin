@@ -29,6 +29,7 @@ function home_quick_links() {
     // get all home_quick_link posts
     $home_links_query = new WP_Query( array(
         'post_type'         => 'home_quick_link',
+        'posts_per_page'    => -1,
         'order'             => 'ASC',
         'meta_query'    => array(
             'relation'  => 'OR',
