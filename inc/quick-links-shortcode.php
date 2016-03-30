@@ -31,6 +31,7 @@ function home_quick_links() {
         'post_type'         => 'home_quick_link',
         'posts_per_page'    => -1,
         'order'             => 'ASC',
+        'orderby'           => 'menu_order date',
         'meta_query'    => array(
             'relation'  => 'OR',
             array(

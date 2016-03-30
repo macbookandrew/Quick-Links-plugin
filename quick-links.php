@@ -82,5 +82,4 @@ function get_image_sizes( $size = '' ) {
     return $sizes;
 }
 
-#TODO: add "order" field to allow sorting, add to query ORDERBY
 #TODO: add parameters to shortcode and categories to allow multiple "sets"
