@@ -2,18 +2,19 @@
 /**
  * Plugin Name: Quick Links
  * Plugin URI: http://code.andrewrminion.com/quick-links-plugin
- * Description: Gives you “quick link” buttons on the home page
- * Version: 1.6.1
- * Author: Andrew Minion
- * Author URI: http://andrewrminion.com
+ * Description: A WordPress plugin to show a series of images as “quick links.”
+ * Version: 1.7
+ * Author: AndrewRMinion Design
+ * Author URI: https://andrewrminion.com/
  * License: GPL2
  */
 
 /* Prevent this file from being accessed directly */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
+/* register post type */
 require_once( 'inc/quick-links-post-type.php' );
 
 /* load backend */
@@ -30,25 +31,25 @@ if ( ! is_admin() ) {
 
     function armd_ql_css() {
         if ( file_exists( get_stylesheet_directory() . '/quick-links-styles.css' ) ) {
-            wp_enqueue_style( 'quick-link-styles', get_stylesheet_directory_uri() . '/quick-links-styles.css', array(), '1.0' );
+            wp_register_style( 'quick-link-styles', get_stylesheet_directory_uri() . '/quick-links-styles.css', array(), '1.7' );
         }
         elseif ( file_exists( get_template_directory() . '/quick-links-styles.css' ) ) {
-            wp_enqueue_style( 'quick-link-styles', get_template_directory_uri() . '/quick-links-styles.css', array(), '1.0' );
+            wp_register_style( 'quick-link-styles', get_template_directory_uri() . '/quick-links-styles.css', array(), '1.7' );
         }
         else {
-            wp_enqueue_style( 'quick-link-styles', plugins_url( '/css/quick-links-styles.css', __FILE__ ), array(), '1.0' );
+            wp_register_style( 'quick-link-styles', plugins_url( '/css/quick-links-styles.css', __FILE__ ), array(), '1.7' );
         }
     }
 
     // register modernizr unless it already has been registered
     function register_modernizr() {
         if ( wp_script_is( 'modernizr' ) ) { return; }
-        else { wp_enqueue_script( 'modernizr-flexbox-flexboxlegacy', plugins_url( '/js/modernizr.flexbox.js', __FILE__ ) ); }
+        else { wp_register_script( 'modernizr-flexbox-flexboxlegacy', plugins_url( '/js/modernizr.flexbox.js', __FILE__ ) ); }
     }
-    add_action( 'wp_enqueue_scripts', 'register_modernizr' );
+    add_action( 'wp_enqueue_scripts', 'register_modernizr', 15 );
 }
 
-// get image thumbnail sizes
+/* get image thumbnail sizes */
 function get_image_sizes( $size = '' ) {
     global $_wp_additional_image_sizes;
 
@@ -82,5 +83,18 @@ function get_image_sizes( $size = '' ) {
     return $sizes;
 }
 
-#TODO: add "order" field to allow sorting, add to query ORDERBY
+/* handle upgrades */
+register_activation_hook( __FILE__, 'armd_ql_fix_null_values' );
+function armd_ql_fix_null_values() {
+    global $wpdb;
+    $wpdb->update(
+        $wpdb->prefix . 'postmeta',
+        array( 'meta_value' => '99991231' ),
+        array(
+            'meta_key'      => 'armd_ql_end_date',
+            'meta_value'    => NULL,
+        )
+    );
+}
+
 #TODO: add parameters to shortcode and categories to allow multiple "sets"

@@ -2,8 +2,8 @@
 - Contributors: [macbookandrew](https://profiles.wordpress.org/macbookandrew/)
 - Tags: button
 - Donate link: [andrewrminion.com/](http://andrewrminion.com/)
-- Tested up to: 4.2.1
-- Stable tag: 1.6.1
+- Tested up to: 4.4.2
+- Stable tag: 1.7
 - License: GPL2
 
 A WordPress plugin to show a series of images as “quick links.”
@@ -26,6 +26,15 @@ By adding a line in your `functions.php` file, you can set the size of the image
 
 
 ## Changelog ##
+### 1.7 ###
+ - Fix NULL/empty end dates
+
+### 1.6.3 ###
+ - Defer check for modernizr until after theme has loaded scripts
+
+### 1.6.2 ###
+ - Fix issue where this plugin overwrote post-thumbnail support for all other post types
+
 ### 1.6.1 ###
  - Add support for opening links in new windows
 
@@ -55,7 +64,7 @@ By adding a line in your `functions.php` file, you can set the size of the image
 
 ### 1.1.1 ###
  - Check whether or not Modernizr has already been loaded before loading our customized copy
- 
+
 ### 1.1 ###
 - Add flexbox support to center items in the parent container
 - Add a custom build of Modernizr to detect flexbox support

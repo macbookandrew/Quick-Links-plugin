@@ -1,7 +1,7 @@
 <?php
 /* Prevent this file from being accessed directly */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
 /*
@@ -12,6 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * <?php if ( function_exists( 'home_quick_links' ) ) { home_quick_links(); } ?>
  */
 function home_quick_links_shortcode() {
+    wp_enqueue_style( 'quick-link-styles' );
+    wp_enqueue_script( 'modernizr-flexbox-flexboxlegacy' );
+
+    // get content
     ob_start();
     home_quick_links();
     $quick_links_content = ob_get_clean();
@@ -25,7 +29,9 @@ function home_quick_links() {
     // get all home_quick_link posts
     $home_links_query = new WP_Query( array(
         'post_type'         => 'home_quick_link',
+        'posts_per_page'    => -1,
         'order'             => 'ASC',
+        'orderby'           => 'menu_order date',
         'meta_query'    => array(
             'relation'  => 'OR',
             array(
